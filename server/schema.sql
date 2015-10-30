@@ -1,14 +1,35 @@
-CREATE DATABASE chat;
+-- CREATE DATABASE chat;
 
 USE chat;
 
 CREATE TABLE messages (
-  /* Describe your table here.*/
+  id int(4) primary key, 
+  text varchar(300), 
+  userID int(3),
+  roomID int(3)
+
 );
 
-/* Create other tables and define schemas for them here! */
 
+CREATE TABLE users (
 
+  id int(3) primary key, name varchar(20)
+
+);
+
+CREATE TABLE rooms (
+
+  id int(3) primary key, name varchar(20)
+
+);
+
+ALTER TABLE messages
+ADD FOREIGN KEY (userID)
+REFERENCES users(id);
+
+ALTER TABLE messages
+ADD FOREIGN KEY (roomID)
+REFERENCES rooms(id);
 
 
 /*  Execute this file from the command line by typing:
