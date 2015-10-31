@@ -14,16 +14,6 @@ var sendResponse = function(response, data, statusCode) {
   response.end(JSON.stringify(data));
 };
 
-var collectData = function(request, callback) {
-  var data = "";
-  request.on('data', function(chunk) {
-    data += chunk;
-  });
-  request.on('end', function() {
-    callback(JSON.parse(data));
-  });
-};
-
 var messages = [
   {
     username: 'dummy',
@@ -36,11 +26,12 @@ module.exports = {
   messages: {
     get: function (req, res) {
       console.log("Now we are in GET")
+      models.messages.get()
       sendResponse(res, {results: messages}, 200);
     }, // a function which handles a get request for all messages
     
     post: function (req, res) {
-      console.log(req.body)
+      models.messages.post(req.body)
       // var data = "";
       // req.on('data', function(data) {
       //   console.log("this is data....",data)
