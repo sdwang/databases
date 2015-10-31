@@ -9,25 +9,28 @@ var headers = {
 };
 
 var sendResponse = function(response, data, statusCode) {
+  console.log("We are inside of send response")
   statusCode = statusCode || 200;
   response.writeHead(statusCode, headers);
   response.end(JSON.stringify(data));
 };
 
-var messages = [
-  {
-    username: 'dummy',
-    text: 'this is a dummy message',
-    roomname: 'lobby'
-  }
-];
+// var messages = [
+//   {
+//     username: 'dummy',
+//     text: 'this is a dummy message',
+//     roomname: 'lobby'
+//   }
+// ];
 
 module.exports = {
   messages: {
     get: function (req, res) {
-      console.log("Now we are in GET")
-      models.messages.get()
-      sendResponse(res, {results: messages}, 200);
+      //console.log("Now we are in GET")
+      //message = models.messages.get()
+      var messages1 = models.messages.get();
+      console.log("in get....", messages1);
+      sendResponse(res, {results: messages1}, 200);
     }, // a function which handles a get request for all messages
     
     post: function (req, res) {
@@ -48,7 +51,7 @@ module.exports = {
     },
 
     options: function(req, res) {
-      console.log("responding to options request in index.js-controller")
+      //console.log("responding to options request in index.js-controller")
       sendResponse(res, null, 204);
     } // a function which handles posting a message to the database
   },
@@ -56,7 +59,7 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-      console.log("Now we are in GET")
+      //console.log("Now we are in GET")
       sendResponse(res, {results: messages}, 200);
     },
 
@@ -65,7 +68,7 @@ module.exports = {
     },
 
     options: function(req, res) {
-      console.log("responding to options request in index.js-controller")
+      //console.log("responding to options request in index.js-controller")
       sendResponse(res, null, 204);
     }
   } //

@@ -1,4 +1,4 @@
--- CREATE DATABASE chat;
+CREATE DATABASE chat;
 
 USE chat;
 
@@ -13,13 +13,13 @@ CREATE TABLE messages (
 
 CREATE TABLE users (
 
-  id int(3) primary key, name varchar(20)
+  id int(3) primary key, username varchar(20)
 
 );
 
 CREATE TABLE rooms (
 
-  id int(3) primary key, name varchar(20)
+  id int(3) primary key, roomname varchar(20)
 
 );
 
