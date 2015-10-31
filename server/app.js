@@ -4,7 +4,6 @@ var controller = require('./controllers');
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
-
 // Router
 var router = require('./routes.js');
 
